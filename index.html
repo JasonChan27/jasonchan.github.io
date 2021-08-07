@@ -153,6 +153,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-style-components在项目中遇到的问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/08/07/style-components在项目中遇到的问题/">style-components在项目中遇到的问题</a>
+    </h1>
+  
+
+        
+        <a href="/2021/08/07/style-components在项目中遇到的问题/" class="archive-article-date">
+  	<time datetime="2021-08-07T14:43:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="使用style-components在iframe中渲染组件后样式不生效（正式环境中）的问题"><a href="#使用style-components在iframe中渲染组件后样式不生效（正式环境中）的问题" class="headerlink" title="使用style-components在iframe中渲染组件后样式不生效（正式环境中）的问题"></a>使用style-components在iframe中渲染组件后样式不生效（正式环境中）的问题</h2><h4 id="一、什么是style-components"><a href="#一、什么是style-components" class="headerlink" title="一、什么是style-components"></a>一、什么是style-components</h4><blockquote>
+<p>styled-components 是一个常用的css in js 类库。和所有同类型的类库一样，通过 js 赋能解决了原生 css 所不具备的能力，比如变量、循环、函数等。</p>
+</blockquote>
+<h4 id="二、在项目中遇到的问题"><a href="#二、在项目中遇到的问题" class="headerlink" title="二、在项目中遇到的问题"></a>二、在项目中遇到的问题</h4><p>一个页面由Parent组件构成，该组件存在一个iframe，并在iframe加载完成后，在iframe中的一个id为<code>container</code> 的div中渲染一个名为<code>Child</code>的组件，关键代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Parent组件 */</span></span><br><span class="line"><span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">'./Child'</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cd = <span class="keyword">this</span>.iframeRef.contentDocument;</span><br><span class="line"><span class="keyword">this</span>.divContainer = cd.getElementById(<span class="string">'container'</span>);</span><br><span class="line"><span class="comment">// 在iframe中渲染Child组件</span></span><br><span class="line">ReactDOM.render(&lt;Child/&gt;, <span class="keyword">this</span>.divContainer, () =&gt; &#123;</span><br><span class="line">  <span class="keyword">this</span>.componentRenderCallback()</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 渲染完成后的回调</span></span><br><span class="line">componentRenderCallback () &#123;</span><br><span class="line">  <span class="comment">// 因为组件渲染后是将style标签插入到了父级document的head中，所以渲染完后，需要将父级docuemnt的head复制到iframe中，以使Child组件的样式在该iframe中生效</span></span><br><span class="line">  <span class="keyword">const</span> cd = <span class="keyword">this</span>.iframeRef.contentDocument;</span><br><span class="line">  <span class="keyword">const</span> head = <span class="built_in">document</span>.head.cloneNode(<span class="literal">true</span>);</span><br><span class="line">  cd.head.remove();</span><br><span class="line">  cd.documentElement.insertBefore(head, cd.body);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/08/07/style-components在项目中遇到的问题/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-设计模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -805,75 +872,6 @@
 
 
   
-    <article id="post-H5、CSS3总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/30/H5、CSS3总结/">H5、CSS3总结</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/30/H5、CSS3总结/" class="archive-article-date">
-  	<time datetime="2018-08-30T11:25:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、HTML5"><a href="#一、HTML5" class="headerlink" title="一、HTML5"></a>一、HTML5</h2><h4 id="1、新特性"><a href="#1、新特性" class="headerlink" title="1、新特性"></a>1、新特性</h4><ul>
-<li>用于绘画的Canvas元素</li>
-<li>用于媒介回放的video和audio元素</li>
-<li>对本地离线存储的更好的支持</li>
-<li>新的特殊内容元素，如：article、footer、header、nav、section</li>
-<li>新的表单控件，如：calendar、date、time、email、url、search</li>
-</ul>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/30/H5、CSS3总结/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -972,11 +970,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+                <a href="javascript:void(0)" class="js-tag color3">webpack</a>
               </li>
              
               <li class="article-tag-list-item">
