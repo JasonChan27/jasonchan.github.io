@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>H5、CSS3总结 | JSON的笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、HTML51、新特性 用于绘画的Canvas元素 用于媒介回放的video和audio元素 对本地离线存储的更好的支持 新的特殊内容元素，如：article、footer、header、nav、section 新的表单控件，如：calendar、date、time、email、url、search">
+<meta property="og:type" content="article">
+<meta property="og:title" content="H5、CSS3总结">
+<meta property="og:url" content="https://jasonchan27.github.io/2018/08/30/H5%E3%80%81CSS3%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="JSON的笔记">
+<meta property="og:description" content="一、HTML51、新特性 用于绘画的Canvas元素 用于媒介回放的video和audio元素 对本地离线存储的更好的支持 新的特殊内容元素，如：article、footer、header、nav、section 新的表单控件，如：calendar、date、time、email、url、search">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2018-08-30T11:25:00.000Z">
+<meta property="article:modified_time" content="2022-10-31T02:08:15.144Z">
+<meta property="article:author" content="Jason Chan">
+<meta property="article:tag" content="HTML5">
+<meta property="article:tag" content="CSS3">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="JSON的笔记" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JSON的笔记</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录想分享的瞬间、前端技术</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jasonchan27.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-H5、CSS3总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2018/08/30/H5%E3%80%81CSS3%E6%80%BB%E7%BB%93/" class="article-date">
+  <time class="dt-published" datetime="2018-08-30T11:25:00.000Z" itemprop="datePublished">2018-08-30</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      H5、CSS3总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、HTML5"><a href="#一、HTML5" class="headerlink" title="一、HTML5"></a>一、HTML5</h2><h4 id="1、新特性"><a href="#1、新特性" class="headerlink" title="1、新特性"></a>1、新特性</h4><ul>
+<li>用于绘画的Canvas元素</li>
+<li>用于媒介回放的video和audio元素</li>
+<li>对本地离线存储的更好的支持</li>
+<li>新的特殊内容元素，如：article、footer、header、nav、section</li>
+<li>新的表单控件，如：calendar、date、time、email、url、search</li>
+</ul>
+<span id="more"></span>
+
+<h4 id="2、H5拖放"><a href="#2、H5拖放" class="headerlink" title="2、H5拖放"></a>2、H5拖放</h4><p>步骤：</p>
+<ol>
+<li>设置元素为可拖放。<code>draggable=&quot;true&quot;</code></li>
+<li>拖动什么。<code>ondragstarrt</code>和<code>setData()</code></li>
+<li>放到何处。<code>ondragover</code>(ev.preventDefault())</li>
+<li>进行放置。<code>ondrop</code>和<code>getData()</code>(ev.preventDefault())</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">HTML</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span><br><span class="line"><span class="language-css"><span class="selector-id">#div1</span> &#123;<span class="attribute">width</span>:<span class="number">198px</span>; <span class="attribute">height</span>:<span class="number">66px</span>;<span class="attribute">padding</span>:<span class="number">10px</span>;<span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#aaaaaa</span>;&#125;</span></span><br><span class="line"><span class="language-css"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">function</span> <span class="title function_">allowDrop</span>(<span class="params">ev</span>)</span></span><br><span class="line"><span class="language-javascript">&#123;</span></span><br><span class="line"><span class="language-javascript">ev.<span class="title function_">preventDefault</span>();</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">function</span> <span class="title function_">drag</span>(<span class="params">ev</span>)</span></span><br><span class="line"><span class="language-javascript">&#123;</span></span><br><span class="line"><span class="language-javascript">ev.<span class="property">dataTransfer</span>.<span class="title function_">setData</span>(<span class="string">&quot;Text&quot;</span>,ev.<span class="property">target</span>.<span class="property">id</span>);</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript"><span class="keyword">function</span> <span class="title function_">drop</span>(<span class="params">ev</span>)</span></span><br><span class="line"><span class="language-javascript">&#123;</span></span><br><span class="line"><span class="language-javascript">ev.<span class="title function_">preventDefault</span>();</span></span><br><span class="line"><span class="language-javascript"><span class="keyword">var</span> data=ev.<span class="property">dataTransfer</span>.<span class="title function_">getData</span>(<span class="string">&quot;Text&quot;</span>);</span></span><br><span class="line"><span class="language-javascript">ev.<span class="property">target</span>.<span class="title function_">appendChild</span>(<span class="variable language_">document</span>.<span class="title function_">getElementById</span>(data));</span></span><br><span class="line"><span class="language-javascript">&#125;</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span>&gt;</span>请把 W3School 的图片拖放到矩形中：<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;div1&quot;</span> <span class="attr">ondrop</span>=<span class="string">&quot;drop(event)&quot;</span> <span class="attr">ondragover</span>=<span class="string">&quot;allowDrop(event)&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">id</span>=<span class="string">&quot;drag1&quot;</span> <span class="attr">src</span>=<span class="string">&quot;/i/eg_dragdrop_w3school.gif&quot;</span> <span class="attr">draggable</span>=<span class="string">&quot;true&quot;</span> <span class="attr">ondragstart</span>=<span class="string">&quot;drag(event)&quot;</span> /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="3、Canvas"><a href="#3、Canvas" class="headerlink" title="3、Canvas"></a>3、Canvas</h4><blockquote>
+<p>Canvas拥有多种绘制路径、矩形、图形、字符及添加图像的方法。</p>
+</blockquote>
+<p>步骤：</p>
+<ol>
+<li>创建Canvas元素</li>
+<li>通过javascript控制<ol>
+<li>i、JS通过id寻找canvas元素</li>
+<li>ii、创建context对象</li>
+<li>ii、通过对象的方法绘制图形</li>
+</ol>
+</li>
+<li>理解坐标，如：fillRect(0,0,150,75)是在画布上绘制150x75的矩形，从左上角开始(0,0)</li>
+</ol>
+<h4 id="4、svg"><a href="#4、svg" class="headerlink" title="4、svg"></a>4、svg</h4><ul>
+<li>可伸缩矢量图形</li>
+<li>用于定义用于网络的基于矢量的图形</li>
+<li>使用XML格式定义图形</li>
+</ul>
+<h4 id="5、地理定位"><a href="#5、地理定位" class="headerlink" title="5、地理定位"></a>5、地理定位</h4><ul>
+<li>检测是否支持地理定位</li>
+<li>如支持，运行getCurrentPosition()，如不支持，向用户提示消息</li>
+<li>getCurrentPosition()运行成功，向showposition中规定的函数返回一个coordinates对象</li>
+<li>showPosition()函数获得并显示经度和纬度</li>
+<li>getCurrentPosition(showPosition,showError)<ul>
+<li>pemission denied 用户不允许地理定位</li>
+<li>position unavailable 无法获取当前位置</li>
+<li>Timeout 操作超时</li>
+</ul>
+</li>
+<li>在地图中显示结果：将经纬度传入谷歌或百度地图的api<ul>
+<li>watchPosition() 返回用户当前位置，并继续返回用户移动时的位置</li>
+<li>clearWatch() 停止watchPosition()方法</li>
+</ul>
+</li>
+</ul>
+<h4 id="6、web存储"><a href="#6、web存储" class="headerlink" title="6、web存储"></a>6、web存储</h4><ul>
+<li>localStorage(无时间限制)<ul>
+<li>localStorage.setItem(“lastname”,”Chen”)</li>
+<li>localStorage.getItem(“lastname”)</li>
+<li>localStorage.pagecount</li>
+</ul>
+</li>
+<li>sessionStorage(针对一个session进行数据存储，窗口关闭后，数据会被删除)<ul>
+<li>sessionStorage.clickcount</li>
+<li>sessionStorage.pagecount</li>
+</ul>
+</li>
+</ul>
+<h4 id="7、Manifest"><a href="#7、Manifest" class="headerlink" title="7、Manifest"></a>7、Manifest</h4><ul>
+<li>文件扩展名：.appcache</li>
+<li>在<code>&lt;hmtl&gt;</code>标签中包含此属性</li>
+<li>分三部分，如下：<ul>
+<li>CACHE MANIFEST<br>  　　＃ 2012-2-21  v1.0.0<br>  　　theme.css<br>  　　logo.gif<br>  　　main.js</li>
+<li>NETWORK<br>  　　＃ 2012-2-21  v1.0.0<br>  　　theme.css<br>  　　logo.gif<br>  　　main.js</li>
+<li>FALLBACK<br>  　　&#x2F;html5&#x2F;  &#x2F;404.html  (第一个是URI资源，第二个是替补)</li>
+</ul>
+</li>
+</ul>
+<h4 id="8、web-worker"><a href="#8、web-worker" class="headerlink" title="8、web worker"></a>8、web worker</h4><blockquote>
+<p>运行在后台的JS</p>
+</blockquote>
+<p>步骤：</p>
+<ol>
+<li>创建web worker文件</li>
+<li>创建web worker对象(w&#x3D;new worker(“demo.js”))</li>
+<li>终止web worker(w.terminate())</li>
+</ol>
+<ul>
+<li>postMessage()向HTML页面传回一段消息</li>
+<li>onmessage事件监听器(event.data)</li>
+</ul>
+<h4 id="9、服务器发送事件server-sent-event"><a href="#9、服务器发送事件server-sent-event" class="headerlink" title="9、服务器发送事件server-sent event"></a>9、服务器发送事件server-sent event</h4><blockquote>
+<p>网页自动获取来自服务器的更新</p>
+</blockquote>
+<p>步骤：</p>
+<ol>
+<li>创建EventSource对象，发送更新页面的URI(demo.php)</li>
+<li>每接收一次更新，就会发生onmessage事件</li>
+<li>将event.data更新到指定id的元素中</li>
+</ol>
+<h4 id="10、input类型"><a href="#10、input类型" class="headerlink" title="10、input类型"></a>10、input类型</h4><ul>
+<li>email</li>
+<li>url</li>
+<li>number</li>
+<li>range</li>
+<li>date<ul>
+<li>type&#x3D;date 选取日、月、年</li>
+<li>type&#x3D;month 月、年</li>
+<li>type&#x3D;week 选取周和年</li>
+<li>type&#x3D;time 选取时间(小时和分钟)</li>
+<li>type&#x3D;datetime 选取时间、日、月、年(UTC时间)</li>
+<li>type&#x3D;datetime-local 选取时间、日、月、年(本地时间)</li>
+</ul>
+</li>
+<li>search</li>
+<li>tel</li>
+<li>color</li>
+</ul>
+<h4 id="11、表单元素"><a href="#11、表单元素" class="headerlink" title="11、表单元素"></a>11、表单元素</h4><ul>
+<li>datalist<br> - 是输入域的选项列表<br> - datalist内的option元素创建的<br> - datalist绑定到输入域，用输入域的list属性引用datalist的id</li>
+<li>keygen<ul>
+<li>密钥对生成器，私钥(private key)存储于客户端，公钥(public key)被发送到服务器，公钥可用于之后验证用户的客户端证书</li>
+</ul>
+</li>
+<li>output</li>
+</ul>
+<h4 id="12、新表单属性"><a href="#12、新表单属性" class="headerlink" title="12、新表单属性"></a>12、新表单属性</h4><ul>
+<li>autocomplete，适用于：<ul>
+<li>form</li>
+<li>input：text,search,url,telephone,email,password,datepickes,range,color</li>
+</ul>
+</li>
+<li>form,适用于所有input类型，必须引用所属表单的id</li>
+<li>表单重写属性<ul>
+<li>formaction</li>
+<li>formencype</li>
+<li>formmethod</li>
+<li>formnovalidate</li>
+<li>formtarget</li>
+</ul>
+</li>
+<li>height和width</li>
+<li>list，规定输入域的datalist，datalist是输入域的选项列表</li>
+<li>min、max、step，适用于：<ul>
+<li>datepickers</li>
+<li>number</li>
+<li>range</li>
+</ul>
+</li>
+<li>multiple，适用于：<ul>
+<li>email</li>
+<li>file</li>
+</ul>
+</li>
+<li>novalidate</li>
+<li>pattern</li>
+<li>placeholder</li>
+<li>required</li>
+</ul>
+<h2 id="二、CSS3"><a href="#二、CSS3" class="headerlink" title="二、CSS3"></a>二、CSS3</h2><h4 id="1、边框"><a href="#1、边框" class="headerlink" title="1、边框"></a>1、边框</h4><ul>
+<li>border-radius</li>
+<li>box-shadow，如：10px 10px 5px #888888</li>
+<li>border-image，如：url(a.png) 30 30 round,参数分别为图片路径、图片边框向内偏移量、边框宽度、铺满方式。</li>
+</ul>
+<h4 id="2、背景"><a href="#2、背景" class="headerlink" title="2、背景"></a>2、背景</h4><ul>
+<li>background-size</li>
+<li>background-roigin,属性有：<ul>
+<li>border-box</li>
+<li>padding-box</li>
+<li>content-box</li>
+</ul>
+</li>
+<li>多重背景图片，如：background-image:url(a.gif),url(b.gif)</li>
+</ul>
+<h4 id="3、文本效果"><a href="#3、文本效果" class="headerlink" title="3、文本效果"></a>3、文本效果</h4><ul>
+<li>text-shadow,如：5px 5px 5px #FF0000，参数分别为水平阴影、垂直阴影、模糊距离、颜色</li>
+<li>自动换行,如：word-wrap:break-word</li>
+<li>text-outline，文本轮廓</li>
+<li>text-overflow，文本益处</li>
+</ul>
+<h4 id="4、字体"><a href="#4、字体" class="headerlink" title="4、字体"></a>4、字体</h4><p>@font-face{<br>    font-family<br>    src<br>    font-stretch<br>    font-style<br>    font-weight(100-900&#x2F;normal&#x2F;bold)<br>    unicode-range<br>}</p>
+<h4 id="5、2D转换"><a href="#5、2D转换" class="headerlink" title="5、2D转换"></a>5、2D转换</h4><ul>
+<li>translate(x,y)</li>
+<li>translateX(n)</li>
+<li>translateY(n)</li>
+<li>scale(x,y)</li>
+<li>rotate(angle)</li>
+<li>skew(x-angle,y-angle)</li>
+<li>matrix(n,n,n,n,n,n)，把所有转换方法组合在一起，需要六个参数，包含数学函数，允许旋转、缩放、移动及倾斜元素。</li>
+</ul>
+<p>属性：</p>
+<ul>
+<li>transform</li>
+<li>transform：设置元素的基点位置</li>
+</ul>
+<h4 id="6、3D转换"><a href="#6、3D转换" class="headerlink" title="6、3D转换"></a>6、3D转换</h4><ul>
+<li>translate3d(x,y,z)</li>
+<li>translateX(x)</li>
+<li>translateY(y)</li>
+<li>translateZ(z)</li>
+<li>scale3d(x,y,z)</li>
+<li>rotate3d(x,y,z,angle)</li>
+<li>perspective(n)</li>
+<li>matrix(…),16个参数，4x4矩阵</li>
+</ul>
+<p>属性：</p>
+<ul>
+<li>transform</li>
+<li>transform-origin</li>
+<li>transform-style</li>
+<li>perspective</li>
+<li>perspective-origin</li>
+<li>backface-visibility</li>
+</ul>
+<h4 id="7、过渡"><a href="#7、过渡" class="headerlink" title="7、过渡"></a>7、过渡</h4><ul>
+<li>规定希望把效果添加到哪个css属性上</li>
+<li>规定效果的时长</li>
+</ul>
+<p>例：transition:width 1s linear 2s;参数分别为css属性、过渡时间、过渡时间曲线(默认ease)、过渡何时开始。<br>transition:width 1s,-webkit-transform 2s;</p>
+<h4 id="8、动画"><a href="#8、动画" class="headerlink" title="8、动画"></a>8、动画</h4><blockquote>
+<p>是使元素从一种样式逐渐变化为另一种样式的效果</p>
+</blockquote>
+<ul>
+<li>用百分比规定变化发生的时间，”from”、”to”等同于0%、100%</li>
+<li>@keyframs规则用于创建动画</li>
+</ul>
+<p>例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@keyframes</span> myfirst&#123;</span><br><span class="line">    <span class="number">0%</span>&#123;</span><br><span class="line">        <span class="attribute">background</span>:red;</span><br><span class="line">        <span class="attribute">left</span>:<span class="number">0px</span>;</span><br><span class="line">        <span class="attribute">top</span>:<span class="number">0px</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="number">100%</span>&#123;</span><br><span class="line">        <span class="attribute">background</span>:green;</span><br><span class="line">        <span class="attribute">left</span>:<span class="number">100px</span>;</span><br><span class="line">        <span class="attribute">top</span>:<span class="number">100px</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line">    <span class="comment">/*参数分别为：动画名称、周期、速度曲线(默认ease)、何时开始、播放次数(默认1次)、是否在下一期逆向播放(默认normal)*/</span></span><br><span class="line">    <span class="attribute">animation</span>:myfirst <span class="number">5s</span> linear <span class="number">2s</span> infinite alternate</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="9、多列"><a href="#9、多列" class="headerlink" title="9、多列"></a>9、多列</h4><ul>
+<li>column-count，元素被分隔的列数</li>
+<li>column-gap，列之间的间隔</li>
+<li>column-rule，列之间的宽度、样式和颜色规则</li>
+</ul>
+<p>例：column-rule:3px outset #ff0000;</p>
+<h4 id="10、用户界面"><a href="#10、用户界面" class="headerlink" title="10、用户界面"></a>10、用户界面</h4><ul>
+<li>resize,规定是否可由用户调整元素尺寸，如：div{resize:both;overflow:auto}</li>
+<li>box-sizing,以确切的方式定义适应某个区域的具体内容，属性有：<ul>
+<li>content-box(只计算内容)</li>
+<li>border-box(计算带内边距和边框)</li>
+<li>inherit</li>
+</ul>
+</li>
+<li>outline,对轮廓进行偏移(轮廓不占用空间)，如：div{border:2px solid black;outline:20px solid red;outline-offset:15px;}</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jasonchan27.github.io/2018/08/30/H5%E3%80%81CSS3%E6%80%BB%E7%BB%93/" data-id="clggg6vkt000kolzk5jc3hf0l" data-title="H5、CSS3总结" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/08/31/%E5%8E%9F%E5%9E%8B/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          jQuery对原型的使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/08/29/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">前端实践总结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hybrid/" rel="tag">Hybrid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVVM/" rel="tag">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6/" rel="tag">React合成事件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React%E5%9F%BA%E7%A1%80/" rel="tag">React基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/State%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86/" rel="tag">State更新原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/style-component/" rel="tag">style-component</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vdom/" rel="tag">vdom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/" rel="tag">前端实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B/" rel="tag">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/" rel="tag">模块机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%BC%E5%AE%B9/" rel="tag">移动端兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/" rel="tag">组件化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag">继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%82%E9%85%8D/" rel="tag">适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" rel="tag">项目中遇到的问题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Hybrid/" style="font-size: 10px;">Hybrid</a> <a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6/" style="font-size: 10px;">React合成事件</a> <a href="/tags/React%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">React基础</a> <a href="/tags/State%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86/" style="font-size: 10px;">State更新原理</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/style-component/" style="font-size: 10px;">style-component</a> <a href="/tags/vdom/" style="font-size: 10px;">vdom</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/" style="font-size: 13.33px;">前端实践</a> <a href="/tags/%E5%8E%9F%E5%9E%8B/" style="font-size: 10px;">原型</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/" style="font-size: 10px;">模块机制</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%BC%E5%AE%B9/" style="font-size: 13.33px;">移动端兼容</a> <a href="/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/" style="font-size: 10px;">组件化</a> <a href="/tags/%E7%BB%A7%E6%89%BF/" style="font-size: 10px;">继承</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E9%80%82%E9%85%8D/" style="font-size: 13.33px;">适配</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 13.33px;">项目</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" style="font-size: 16.67px;">项目中遇到的问题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/04/14/webpack%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/">webpack 实践总结</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/PC%E7%AB%AF%E5%92%8C%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%B1%E7%94%A8%E4%B8%80%E5%A5%97%E4%BB%A3%E7%A0%81%E7%9A%84%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90/">PC 端和移动端共用一套代码的可行性分析</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/05/Node%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/">Node 模块机制</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/12/h5%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%E5%92%8C%E9%80%82%E9%85%8D%E6%80%BB%E7%BB%93/">h5 兼容问题和适配总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/React%20State%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86/">React State更新原理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Jason Chan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

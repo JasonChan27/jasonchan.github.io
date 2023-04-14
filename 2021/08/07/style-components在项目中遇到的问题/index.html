@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>style-components在项目中遇到的问题 | JSON的笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="使用style-components在iframe中渲染组件后样式不生效（正式环境中）的问题一、什么是style-components styled-components 是一个常用的css in js 类库。和所有同类型的类库一样，通过 js 赋能解决了原生 css 所不具备的能力，比如变量、循环、函数等。  二、在项目中遇到的问题一个页面由Parent组件构成，该组件存在一个iframe，并在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="style-components在项目中遇到的问题">
+<meta property="og:url" content="https://jasonchan27.github.io/2021/08/07/style-components%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="JSON的笔记">
+<meta property="og:description" content="使用style-components在iframe中渲染组件后样式不生效（正式环境中）的问题一、什么是style-components styled-components 是一个常用的css in js 类库。和所有同类型的类库一样，通过 js 赋能解决了原生 css 所不具备的能力，比如变量、循环、函数等。  二、在项目中遇到的问题一个页面由Parent组件构成，该组件存在一个iframe，并在">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://jasonchan27.github.io/images/image-20210729165909850.png">
+<meta property="og:image" content="https://jasonchan27.github.io/images/image-20210729170757229.png">
+<meta property="og:image" content="https://jasonchan27.github.io/images/image-20210729172431795.png">
+<meta property="og:image" content="https://jasonchan27.github.io/images/image-20210729172553508.png">
+<meta property="og:image" content="https://jasonchan27.github.io/images/image-20210729180510789.png">
+<meta property="og:image" content="https://jasonchan27.github.io/images/image-20210729180629047.png">
+<meta property="og:image" content="https://jasonchan27.github.io/images/image-20210729180747162.png">
+<meta property="og:image" content="https://jasonchan27.github.io/images/image-20210730142746165.png">
+<meta property="article:published_time" content="2021-08-07T14:43:32.000Z">
+<meta property="article:modified_time" content="2022-10-31T02:08:15.146Z">
+<meta property="article:author" content="Jason Chan">
+<meta property="article:tag" content="React">
+<meta property="article:tag" content="项目中遇到的问题">
+<meta property="article:tag" content="style-component">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jasonchan27.github.io/images/image-20210729165909850.png">
+  
+    <link rel="alternate" href="/atom.xml" title="JSON的笔记" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JSON的笔记</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录想分享的瞬间、前端技术</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jasonchan27.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-style-components在项目中遇到的问题" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/07/style-components%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="article-date">
+  <time class="dt-published" datetime="2021-08-07T14:43:32.000Z" itemprop="datePublished">2021-08-07</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      style-components在项目中遇到的问题
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="使用style-components在iframe中渲染组件后样式不生效（正式环境中）的问题"><a href="#使用style-components在iframe中渲染组件后样式不生效（正式环境中）的问题" class="headerlink" title="使用style-components在iframe中渲染组件后样式不生效（正式环境中）的问题"></a>使用style-components在iframe中渲染组件后样式不生效（正式环境中）的问题</h2><h4 id="一、什么是style-components"><a href="#一、什么是style-components" class="headerlink" title="一、什么是style-components"></a>一、什么是style-components</h4><blockquote>
+<p>styled-components 是一个常用的css in js 类库。和所有同类型的类库一样，通过 js 赋能解决了原生 css 所不具备的能力，比如变量、循环、函数等。</p>
+</blockquote>
+<h4 id="二、在项目中遇到的问题"><a href="#二、在项目中遇到的问题" class="headerlink" title="二、在项目中遇到的问题"></a>二、在项目中遇到的问题</h4><p>一个页面由Parent组件构成，该组件存在一个iframe，并在iframe加载完成后，在iframe中的一个id为<code>container</code> 的div中渲染一个名为<code>Child</code>的组件，关键代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Parent组件 */</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">Child</span> <span class="keyword">from</span> <span class="string">&#x27;./Child&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> cd = <span class="variable language_">this</span>.<span class="property">iframeRef</span>.<span class="property">contentDocument</span>;</span><br><span class="line"><span class="variable language_">this</span>.<span class="property">divContainer</span> = cd.<span class="title function_">getElementById</span>(<span class="string">&#x27;container&#x27;</span>);</span><br><span class="line"><span class="comment">// 在iframe中渲染Child组件</span></span><br><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(<span class="language-xml"><span class="tag">&lt;<span class="name">Child</span>/&gt;</span></span>, <span class="variable language_">this</span>.<span class="property">divContainer</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">componentRenderCallback</span>()</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 渲染完成后的回调</span></span><br><span class="line">componentRenderCallback () &#123;</span><br><span class="line">  <span class="comment">// 因为组件渲染后是将style标签插入到了父级document的head中，所以渲染完后，需要将父级docuemnt的head复制到iframe中，以使Child组件的样式在该iframe中生效</span></span><br><span class="line">  <span class="keyword">const</span> cd = <span class="variable language_">this</span>.<span class="property">iframeRef</span>.<span class="property">contentDocument</span>;</span><br><span class="line">  <span class="keyword">const</span> head = <span class="variable language_">document</span>.<span class="property">head</span>.<span class="title function_">cloneNode</span>(<span class="literal">true</span>);</span><br><span class="line">  cd.<span class="property">head</span>.<span class="title function_">remove</span>();</span><br><span class="line">  cd.<span class="property">documentElement</span>.<span class="title function_">insertBefore</span>(head, cd.<span class="property">body</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Child组件 */</span></span><br><span class="line"><span class="keyword">import</span> <span class="title class_">React</span>, &#123; <span class="title class_">Component</span>, <span class="title class_">Fragment</span> &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> styled <span class="keyword">from</span> <span class="string">&#x27;styled-components&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title class_">ChildStyle</span> = styled.<span class="property">div</span><span class="string">`</span></span><br><span class="line"><span class="string">.test-p &#123;</span></span><br><span class="line"><span class="string">  font-size: 30px;</span></span><br><span class="line"><span class="string">  color:red;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Child</span> <span class="keyword">extends</span> <span class="title class_ inherited__">Component</span> &#123;</span><br><span class="line"></span><br><span class="line">  <span class="title function_">render</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> (<span class="language-xml"><span class="tag">&lt;<span class="name">ChildStyle</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">p</span> <span class="attr">className</span>=<span class="string">&quot;test-p&quot;</span>&gt;</span>I am PrintTable<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">    <span class="tag">&lt;/<span class="name">ChildStyle</span>&gt;</span></span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="title class_">Child</span></span><br></pre></td></tr></table></figure>
+
+<p>在构建环境为development情况下，页面可以正常渲染，如下图：</p>
+<p><img src="/images/image-20210729165909850.png" alt="image-20210729165909850"></p>
+<p>在构建环境为production的情况下，页面渲染后样式没生效，如下图：</p>
+<p><img src="/images/image-20210729170757229.png" alt="image-20210729170757229"></p>
+<h4 id="三、排查问题的思路"><a href="#三、排查问题的思路" class="headerlink" title="三、排查问题的思路"></a>三、排查问题的思路</h4><h6 id="1、查看style-components生成的style标签，development环境是有text节点的，而production环境是空节点。"><a href="#1、查看style-components生成的style标签，development环境是有text节点的，而production环境是空节点。" class="headerlink" title="1、查看style-components生成的style标签，development环境是有text节点的，而production环境是空节点。"></a>1、查看style-components生成的style标签，development环境是有text节点的，而production环境是空节点。</h6><p>如下图：</p>
+<p><img src="/images/image-20210729172431795.png" alt="image-20210729172431795"></p>
+<p><img src="/images/image-20210729172553508.png" alt="image-20210729172553508"></p>
+<p>所以复制style标签到iframe中后，在production环境样式自然是不生效的。</p>
+<p>猜测可能原因是打包配置的问题，如下：</p>
+<ul>
+<li><p>production环境打包过程中开启了tree-shaking，将插入到style中的逻辑给剔除了。</p>
+<ul>
+<li>排除此原因，Tree-shaking主要依赖于ES6的模块化import和export，将没有用到代码去除，而生成的代码中是可以找到相关的代码的。</li>
+</ul>
+</li>
+<li><p>可能是mini-css-extract-plugin插件将包含 CSS 的 JS 文件提取到了单独的css文件，导致style标签子节点为空。</p>
+<ul>
+<li>排除此原因。在其他的css文件中并没找到<code>.test-p</code>相关的样式。</li>
+</ul>
+</li>
+<li><p>索性将production下的配置改成和development下的配置一样，再次打包，还是同样的效果。</p>
+<ul>
+<li>因此，排除了配置对代码逻辑的影响。</li>
+</ul>
+</li>
+</ul>
+<h6 id="2、网上查相关资料，有如下可能"><a href="#2、网上查相关资料，有如下可能" class="headerlink" title="2、网上查相关资料，有如下可能"></a>2、网上查相关资料，有如下可能</h6><ul>
+<li>浏览器把插入style的代码当做广告了<ul>
+<li>排除此原因。取消设置浏览器的广告劫持，还是如此。</li>
+</ul>
+</li>
+<li>安全策略style-src配置的限制<ul>
+<li>排除此原因。查看请求头的配置，并无此配置。</li>
+</ul>
+</li>
+</ul>
+<h6 id="3、尝试在父document和iframe的document中都渲染Child组件，发现父docuemnt组件样式生效，iframe中的组件样式不生效。并且style标签还是空的。"><a href="#3、尝试在父document和iframe的document中都渲染Child组件，发现父docuemnt组件样式生效，iframe中的组件样式不生效。并且style标签还是空的。" class="headerlink" title="3、尝试在父document和iframe的document中都渲染Child组件，发现父docuemnt组件样式生效，iframe中的组件样式不生效。并且style标签还是空的。"></a>3、尝试在父document和iframe的document中都渲染Child组件，发现父docuemnt组件样式生效，iframe中的组件样式不生效。并且style标签还是空的。</h6><p>如下图：</p>
+<p><img src="/images/image-20210729180510789.png" alt="image-20210729180510789"></p>
+<p><img src="/images/image-20210729180629047.png" alt="image-20210729180629047"></p>
+<p><img src="/images/image-20210729180747162.png" alt="image-20210729180747162"></p>
+<p>打开控制台，查看父docuemnt下的组件样式后，它就是head中的空style标签，没有子节点，但它确实是有样式规则的。</p>
+<p>查阅资料得知，插入或修改一个dom节点的样式有两种方式，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过DOM API（或者通过插入style和link标签）</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&#x27;myDiv&#x27;</span>).<span class="property">style</span>.<span class="property">background</span> = <span class="string">&#x27;blue&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 通过CSSOM API</span></span><br><span class="line"><span class="keyword">const</span> style = <span class="variable language_">document</span>.<span class="property">styleSheets</span>[<span class="number">0</span>];</span><br><span class="line">style.<span class="property">sheet</span>.<span class="title function_">insertRule</span>(<span class="string">&#x27;#myDiv &#123;background-color: blue&#125;&#x27;</span>);</span><br></pre></td></tr></table></figure>
+
+<p>由此可知，外document通过CSSOM API对样式表操作添加了一条样式规则，类似进行了 <code>styleSheet.insertRule(&#39;.test-p &#123; font-size: 30px, color:red &#125;&#39;)</code>的操作，进而修改了该组件的样式。并且此API只对父document的样式表进行了修改，所以只对父docuemnt的组件的样式生效，而将父document的head复制到iframe的head中，因为style标签是空的，所以对于iframe中组件样式当然是不生效的。</p>
+<p>到此，需要知道style-components的运行机制，所以要去了解下源码。</p>
+<h4 id="三、style-components源码分析"><a href="#三、style-components源码分析" class="headerlink" title="三、style-components源码分析"></a>三、style-components源码分析</h4><p>参考了此文章<a target="_blank" rel="noopener" href="https://juejin.cn/post/6885911421167599623">深入理解styled-components运行机制</a>，了解了一下style-components的运行机制。</p>
+<p>由此，可以知道将css代码插入到head中是通过<code>insertRules</code>方法执行的，然后去控制台进行调试代码，找到与此相关的代码，关键代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> O = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">e</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">groupSizes</span> = <span class="keyword">new</span> <span class="title class_">Uint32Array</span>(<span class="number">512</span>),</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">length</span> = <span class="number">512</span>,</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">tag</span> = e</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> t = e.<span class="property"><span class="keyword">prototype</span></span>;</span><br><span class="line">  t.<span class="property">insertRules</span> = <span class="keyword">function</span>(<span class="params">e, t</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (e &gt;= <span class="variable language_">this</span>.<span class="property">groupSizes</span>.<span class="property">length</span>) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> r = <span class="variable language_">this</span>.<span class="property">groupSizes</span>, n = r.<span class="property">length</span>, o = n; e &gt;= o; )</span><br><span class="line">        (o &lt;&lt;= <span class="number">1</span>) &lt; <span class="number">0</span> &amp;&amp; <span class="title function_">E</span>(<span class="number">16</span>, <span class="string">&quot;&quot;</span> + e);</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">groupSizes</span> = <span class="keyword">new</span> <span class="title class_">Uint32Array</span>(o),</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">groupSizes</span>.<span class="title function_">set</span>(r),</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">length</span> = o;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> i = n; i &lt; o; i++)</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">groupSizes</span>[i] = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> a = <span class="variable language_">this</span>.<span class="title function_">indexOfGroup</span>(e + <span class="number">1</span>), s = <span class="number">0</span>, c = t.<span class="property">length</span>; s &lt; c; s++)</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">tag</span>.<span class="title function_">insertRule</span>(a, t[s]) &amp;&amp; (<span class="variable language_">this</span>.<span class="property">groupSizes</span>[e]++, a++)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+
+
+
+<p>打断点调试，可知insertRules方法中的<code>this.tag</code>就是生成的style标签，然后通过调用<code>this.tag.insertRule</code>方法去添加的样式规则。</p>
+<p>打断点进入<code>this.tag</code>的insertRule方法，关键代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">M = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">e</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> t = <span class="variable language_">this</span>.<span class="property">element</span> = <span class="title function_">B</span>(e);</span><br><span class="line">    t.<span class="title function_">appendChild</span>(<span class="variable language_">document</span>.<span class="title function_">createTextNode</span>(<span class="string">&quot;&quot;</span>)),</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">sheet</span> = <span class="keyword">function</span>(<span class="params">e</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (e.<span class="property">sheet</span>)</span><br><span class="line">        <span class="keyword">return</span> e.<span class="property">sheet</span>;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">var</span> t = <span class="variable language_">document</span>.<span class="property">styleSheets</span>, r = <span class="number">0</span>, n = t.<span class="property">length</span>; r &lt; n; r++) &#123;</span><br><span class="line">        <span class="keyword">var</span> o = t[r];</span><br><span class="line">        <span class="keyword">if</span> (o.<span class="property">ownerNode</span> === e)</span><br><span class="line">          <span class="keyword">return</span> o</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="title function_">E</span>(<span class="number">17</span>)</span><br><span class="line">    &#125;(t),</span><br><span class="line">      <span class="variable language_">this</span>.<span class="property">length</span> = <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> t = e.<span class="property"><span class="keyword">prototype</span></span>;</span><br><span class="line">  <span class="keyword">return</span> t.<span class="property">insertRule</span> = <span class="keyword">function</span>(<span class="params">e, t</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">sheet</span>.<span class="title function_">insertRule</span>(t, e),</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">length</span>++,</span><br><span class="line">        !<span class="number">0</span></span><br><span class="line">    &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">      <span class="keyword">return</span> !<span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+
+<p>可知，<code>this.sheet.insertRule</code>是添加样式规则的。再分析<code>this.sheet</code>由来可知，在当前document下所有样式表中循环遍历，找到样式表的<code>ownerNode </code>  与该 <code>this.tag</code> （也就是要插入到head中style标签）相同的样式表 ,所以<code>this.sheet</code>就是在当前document下属于插入到head中的style标签的样式表。进而通过操作CSSOM API<code>this.sheet.insertRule</code>添加对应的样式。</p>
+<p>虽然通过操作CSSOM API对父docuemnt的组件添加样式可以生效，但iframe中的组件样式自然是不生效的，因为操作的是父document的样式表。</p>
+<p>疑问：为什么development环境下生成的style标签里是有子节点的，而production环境是没有子节点，而是通过CSSOM API来操作样式呢？</p>
+<p>尝试将打包配置切换到development环境，并在控制台调试，找到相关的插入样式的代码，关键代码如下:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">V = <span class="keyword">function</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">function</span> <span class="title function_">e</span>(<span class="params">e</span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> t = <span class="variable language_">this</span>.<span class="property">element</span> = <span class="title function_">z</span>(e);</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">nodes</span> = t.<span class="property">childNodes</span>,</span><br><span class="line">    <span class="variable language_">this</span>.<span class="property">length</span> = <span class="number">0</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> t = e.<span class="property"><span class="keyword">prototype</span></span>;</span><br><span class="line">  <span class="keyword">return</span> t.<span class="property">insertRule</span> = <span class="keyword">function</span>(<span class="params">e, t</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (e &lt;= <span class="variable language_">this</span>.<span class="property">length</span> &amp;&amp; e &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> n = <span class="variable language_">document</span>.<span class="title function_">createTextNode</span>(t)</span><br><span class="line">      , r = <span class="variable language_">this</span>.<span class="property">nodes</span>[e];</span><br><span class="line">      <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">element</span>.<span class="title function_">insertBefore</span>(n, r || <span class="literal">null</span>),</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">length</span>++,</span><br><span class="line">        !<span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> !<span class="number">1</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;()</span><br></pre></td></tr></table></figure>
+
+<p>可知，在development环境下，是通过<code>this.element.insertBefore</code>来添加样式规则的，<code>this.element</code>便是style标签，最后将每条样式规则通过text节点插入到了style标签中。</p>
+<p>所以，style-components在development环境下是通过基于文本节点的 CSS 注入系统，以向 DOM 添加样式；而production环境下是通过CSSOM API，以向对应的样式表中添加样式规则。</p>
+<p>然后继续调试，查找<code>this.tag</code>标签生成的相关代码，关键代码如下：</p>
+<p><img src="/images/image-20210730142746165.png" alt="image-20210730142746165"></p>
+<p>然后在style-components未处理过的源代码中，代码是这样的：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> makeTag = <span class="keyword">function</span> <span class="title function_">makeTag</span>(<span class="params">_ref</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> isServer = _ref.<span class="property">isServer</span>,</span><br><span class="line">      useCSSOMInjection = _ref.<span class="property">useCSSOMInjection</span>,</span><br><span class="line">      target = _ref.<span class="property">target</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (isServer) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">VirtualTag</span>(target);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (useCSSOMInjection) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">CSSOMTag</span>(target);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">TextTag</span>(target);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>可知，styled-components 是根据不同参数来选择生成对应不同style标签的实例，再根据各自的insertRule方法插入样式。</p>
+<p>顺代码往上找，可知，isServer是指不是浏览器环境，useCSSOMInjection是一个与环境配置变量相关的三元运算符，关键代码如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// isServer</span></span><br><span class="line">isServer = <span class="keyword">typeof</span> <span class="variable language_">window</span> !== <span class="string">&#x27;undefined&#x27;</span> &amp;&amp; <span class="string">&#x27;HTMLElement&#x27;</span> <span class="keyword">in</span> <span class="variable language_">window</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// useCSSOMInjection</span></span><br><span class="line">useCSSOMInjection = !<span class="title class_">Boolean</span>(<span class="keyword">typeof</span> <span class="variable constant_">SC_DISABLE_SPEEDY</span> === <span class="string">&#x27;boolean&#x27;</span> ? <span class="variable constant_">SC_DISABLE_SPEEDY</span> : <span class="keyword">typeof</span> process !== <span class="string">&#x27;undefined&#x27;</span> &amp;&amp; <span class="keyword">typeof</span> process.<span class="property">env</span>.<span class="property">REACT_APP_SC_DISABLE_SPEEDY</span> !== <span class="string">&#x27;undefined&#x27;</span> &amp;&amp; process.<span class="property">env</span>.<span class="property">REACT_APP_SC_DISABLE_SPEEDY</span> !== <span class="string">&#x27;&#x27;</span> ? process.<span class="property">env</span>.<span class="property">REACT_APP_SC_DISABLE_SPEEDY</span> === <span class="string">&#x27;false&#x27;</span> ? <span class="literal">false</span> : process.<span class="property">env</span>.<span class="property">REACT_APP_SC_DISABLE_SPEEDY</span> : <span class="keyword">typeof</span> process !== <span class="string">&#x27;undefined&#x27;</span> &amp;&amp; <span class="keyword">typeof</span> process.<span class="property">env</span>.<span class="property">SC_DISABLE_SPEEDY</span> !== <span class="string">&#x27;undefined&#x27;</span> &amp;&amp; process.<span class="property">env</span>.<span class="property">SC_DISABLE_SPEEDY</span> !== <span class="string">&#x27;&#x27;</span> ? process.<span class="property">env</span>.<span class="property">SC_DISABLE_SPEEDY</span> === <span class="string">&#x27;false&#x27;</span> ? <span class="literal">false</span> : process.<span class="property">env</span>.<span class="property">SC_DISABLE_SPEEDY</span> : process.<span class="property">env</span>.<span class="property">NODE_ENV</span> !== <span class="string">&#x27;production&#x27;</span>); </span><br></pre></td></tr></table></figure>
+
+<p>到此可知，development环境下useCSSOMInjection为false，走的<code>new TextTag</code>，对应创建实例的insertRule方法是通过基于文本节点的 CSS 注入系统，以向 DOM 添加样式。而production环境下useCSSOMInjection为true，走的<code>new CSSOMTag</code>，对应创建实例的insertRule方法是通过CSSOM API，以向对应的样式表中添加样式规则。</p>
+<p>综上，在development环境下生成的style标签是有对应的样式规则子节点的，然后复制style到iframe中的head中，组件样式可以正常显示；而在production环境下生成的style标签是没有子节点，是通过操作CSSOM AP向样式表中添加样式规则，然后复制style到iframe中的head中，自然组件的样式也不会生效。</p>
+<p>那有什么解决方案呢？</p>
+<h4 id="四、解决方案"><a href="#四、解决方案" class="headerlink" title="四、解决方案"></a>四、解决方案</h4><p>查阅<a target="_blank" rel="noopener" href="https://styled-components.com/docs/api">style-compnents官方文档</a>， StyleSheetManager可以作为辅助组件，强制切换到较慢的基于文本节点的 CSS 注入系统，以向 DOM 添加样式，运用如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(</span><br><span class="line">   <span class="language-xml"><span class="tag">&lt;<span class="name">StyleSheetManager</span> <span class="attr">disableCSSOMInjections</span>=<span class="string">&#123;true&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Child</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml">   <span class="tag">&lt;/<span class="name">StyleSheetManager</span>&gt;</span></span>,</span><br><span class="line">   <span class="variable language_">this</span>.<span class="property">divContainer</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">   <span class="variable language_">this</span>.<span class="title function_">componentRenderCallback</span>()</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这样，就会强制切换到基于文本节点的 CSS 注入系统，以向 DOM 添加样式，从而使iframe中组件的样式生效。</p>
+<p>StyleSheetManager还有个<code>target</code>属性，以提供目标的 DOM 节点以注入样式信息，运用如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">ReactDOM</span>.<span class="title function_">render</span>(</span><br><span class="line">   <span class="language-xml"><span class="tag">&lt;<span class="name">StyleSheetManager</span> <span class="attr">target</span>=<span class="string">&#123;this.divContainer&#125;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">      <span class="tag">&lt;<span class="name">Child</span>/&gt;</span></span></span><br><span class="line"><span class="language-xml">   <span class="tag">&lt;/<span class="name">StyleSheetManager</span>&gt;</span></span>,</span><br><span class="line">   <span class="variable language_">this</span>.<span class="property">divContainer</span>, <span class="function">() =&gt;</span> &#123;</span><br><span class="line">   <span class="variable language_">this</span>.<span class="title function_">componentRenderCallback</span>()</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>这样，生成的style标签不会在父document的head下，而是在<code>target</code>指定的<code>this.divContainer</code>中生成对应的style标签，这样，也就不用辅助父document的head到iframe中去了，使逻辑更简洁明了，推荐使用这个api的属性来解决这个问题。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jasonchan27.github.io/2021/08/07/style-components%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" data-id="clggg6vl6000uolzk6w1pcv0p" data-title="style-components在项目中遇到的问题" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/style-component/" rel="tag">style-component</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" rel="tag">项目中遇到的问题</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/09/04/React%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%BA%94%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          React基础及应用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/12/13/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">设计模式笔记</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hybrid/" rel="tag">Hybrid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVVM/" rel="tag">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6/" rel="tag">React合成事件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React%E5%9F%BA%E7%A1%80/" rel="tag">React基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/State%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86/" rel="tag">State更新原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/style-component/" rel="tag">style-component</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vdom/" rel="tag">vdom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/" rel="tag">前端实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B/" rel="tag">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/" rel="tag">模块机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%BC%E5%AE%B9/" rel="tag">移动端兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/" rel="tag">组件化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag">继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%82%E9%85%8D/" rel="tag">适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" rel="tag">项目中遇到的问题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Hybrid/" style="font-size: 10px;">Hybrid</a> <a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6/" style="font-size: 10px;">React合成事件</a> <a href="/tags/React%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">React基础</a> <a href="/tags/State%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86/" style="font-size: 10px;">State更新原理</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/style-component/" style="font-size: 10px;">style-component</a> <a href="/tags/vdom/" style="font-size: 10px;">vdom</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/" style="font-size: 13.33px;">前端实践</a> <a href="/tags/%E5%8E%9F%E5%9E%8B/" style="font-size: 10px;">原型</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/" style="font-size: 10px;">模块机制</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%BC%E5%AE%B9/" style="font-size: 13.33px;">移动端兼容</a> <a href="/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/" style="font-size: 10px;">组件化</a> <a href="/tags/%E7%BB%A7%E6%89%BF/" style="font-size: 10px;">继承</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E9%80%82%E9%85%8D/" style="font-size: 13.33px;">适配</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 13.33px;">项目</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" style="font-size: 16.67px;">项目中遇到的问题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/04/14/webpack%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/">webpack 实践总结</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/PC%E7%AB%AF%E5%92%8C%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%B1%E7%94%A8%E4%B8%80%E5%A5%97%E4%BB%A3%E7%A0%81%E7%9A%84%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90/">PC 端和移动端共用一套代码的可行性分析</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/05/Node%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/">Node 模块机制</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/12/h5%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%E5%92%8C%E9%80%82%E9%85%8D%E6%80%BB%E7%BB%93/">h5 兼容问题和适配总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/React%20State%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86/">React State更新原理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Jason Chan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>h5 兼容问题和适配总结 | JSON的笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="一、input 的 disabled 属性如果给 input 添加 disabled 属性，IOS 会检测到 disabled 属性，给输入框的默认字体设置上灰色和透明度，导致在 IOS 端 placeholder 和输入的文本都呈现灰色，与安卓端表现不一致，安卓端没有这个问题。 我使用的是 Vant 中的 Field 输入框，首先尝试了一个方法，通过自定义样式去覆盖： 1234567891011">
+<meta property="og:type" content="article">
+<meta property="og:title" content="h5 兼容问题和适配总结">
+<meta property="og:url" content="https://jasonchan27.github.io/2022/04/12/h5%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%E5%92%8C%E9%80%82%E9%85%8D%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="JSON的笔记">
+<meta property="og:description" content="一、input 的 disabled 属性如果给 input 添加 disabled 属性，IOS 会检测到 disabled 属性，给输入框的默认字体设置上灰色和透明度，导致在 IOS 端 placeholder 和输入的文本都呈现灰色，与安卓端表现不一致，安卓端没有这个问题。 我使用的是 Vant 中的 Field 输入框，首先尝试了一个方法，通过自定义样式去覆盖： 1234567891011">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-04-12T04:01:09.000Z">
+<meta property="article:modified_time" content="2022-10-31T03:39:28.731Z">
+<meta property="article:author" content="Jason Chan">
+<meta property="article:tag" content="移动端兼容">
+<meta property="article:tag" content="适配">
+<meta property="article:tag" content="项目中遇到的问题">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="JSON的笔记" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">JSON的笔记</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">记录想分享的瞬间、前端技术</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jasonchan27.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-h5兼容问题和适配总结" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2022/04/12/h5%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%E5%92%8C%E9%80%82%E9%85%8D%E6%80%BB%E7%BB%93/" class="article-date">
+  <time class="dt-published" datetime="2022-04-12T04:01:09.000Z" itemprop="datePublished">2022-04-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      h5 兼容问题和适配总结
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="一、input-的-disabled-属性"><a href="#一、input-的-disabled-属性" class="headerlink" title="一、input 的 disabled 属性"></a>一、input 的 disabled 属性</h2><p>如果给 input 添加 disabled 属性，IOS 会检测到 disabled 属性，给输入框的默认字体设置上灰色和透明度，导致在 IOS 端 placeholder 和输入的文本都呈现灰色，与安卓端表现不一致，安卓端没有这个问题。</p>
+<p>我使用的是 Vant 中的 Field 输入框，首先尝试了一个方法，通过自定义样式去覆盖：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.van-field__control</span> &#123;</span><br><span class="line">  <span class="selector-tag">&amp;</span><span class="selector-pseudo">:disabled</span> &#123;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    -webkit-<span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    -webkit-text-fill-<span class="attribute">color</span>: <span class="number">#131212</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#131212</span>;</span><br><span class="line">    <span class="selector-tag">&amp;</span><span class="selector-pseudo">::placeholder</span> &#123;</span><br><span class="line">      -webkit-text-fill-<span class="attribute">color</span>: <span class="number">#b0b1b8</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个方法还是没能解决这个兼容问题，随后我尝试去掉 disabled 属性，给 input 加上了 readonly 属性，可以解决这个问题。但使用 readonly 属性点击 input 的时候会出现光标&#96;。于是查询资料，尝试了以下方法:</p>
+<span id="more"></span>
+
+<h4 id="1、user-select-属性"><a href="#1、user-select-属性" class="headerlink" title="1、user-select 属性"></a>1、user-select 属性</h4><p>尝试了增加了<code>user-select</code>属性：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.van-field__control</span><span class="selector-pseudo">:read-only</span> &#123;</span><br><span class="line">  user-select: <span class="attribute">none;</span></span><br><span class="line"><span class="attribute">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>虽然不会出现光标了，但用户想要复制该表单内容就不行了，体验很差，放弃了这个方案。</p>
+<h4 id="2、pointer-events-属性"><a href="#2、pointer-events-属性" class="headerlink" title="2、pointer-events 属性"></a>2、pointer-events 属性</h4><p>尝试了增加了<code>pointer-events</code>属性：</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.van-field__control</span><span class="selector-pseudo">:read-only</span> &#123;</span><br><span class="line">  <span class="attribute">pointer-events</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>虽然也不会出现光标了，但绑定在只读表单元素的所有事件将无法生效，这个也是体验很差的。</p>
+<h4 id="3、通过-js-控制"><a href="#3、通过-js-控制" class="headerlink" title="3、通过 js 控制"></a>3、通过 js 控制</h4><p>尝试让 input 聚焦的时候自动失焦：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;filed-wrapper&quot;&gt;</span><br><span class="line">    &lt;van-field :readonly=&quot;readonly&quot; @focus=&quot;focusChangeHandle&quot; /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot;&gt;</span><br><span class="line">import Vue from &quot;vue&quot;;</span><br><span class="line"></span><br><span class="line">export default Vue.extend(&#123;</span><br><span class="line">  methods: &#123;</span><br><span class="line">    focusChangeHandle(e: any): void &#123;</span><br><span class="line">      if (this.readonly) &#123;</span><br><span class="line">        this.$nextTick(() =&gt; &#123;</span><br><span class="line">          (e.target as any)?.blur();</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>这样也可解决问题，但也有不好的地方，js 处理相对没有 css 好，而且可能会对该 input 的其它事件造成额外影响。</p>
+<blockquote>
+<p>综上，和自己的开发场景，还是觉得最后一种方案比较适合我。</p>
+</blockquote>
+<h2 id="二、聚焦-input-弹起软键盘的兼容"><a href="#二、聚焦-input-弹起软键盘的兼容" class="headerlink" title="二、聚焦 input 弹起软键盘的兼容"></a>二、聚焦 input 弹起软键盘的兼容</h2><p>在安卓上，输入框如果在页面居下的位置，当获取焦点的时候，软键盘弹起，会遮住输入框，导致不能实时看见输入的内容。</p>
+<h4 id="1、IOS-和-Android-在软键盘弹起和收起的表现"><a href="#1、IOS-和-Android-在软键盘弹起和收起的表现" class="headerlink" title="1、IOS 和 Android 在软键盘弹起和收起的表现"></a>1、IOS 和 Android 在软键盘弹起和收起的表现</h4><ul>
+<li>在 IOS 上<ul>
+<li>输入框（input、textarea 或 富文本）获取焦点，键盘弹起，页面（webview）并没有被压缩，或者说高度（height）没有改变，只是页面（webview）整体往上滚了，且最大滚动高度（scrollTop）为软键盘高度。</li>
+<li>触发软键盘上的“收起”按钮键盘或者输入框以外的页面区域时，输入框失去焦点，软键盘收起。</li>
+</ul>
+</li>
+<li>在 Android 上<ul>
+<li>输入框获取焦点，键盘弹起，但是页面（webview）高度会发生改变，一般来说，高度为可视区高度（原高度减去软键盘高度），除了因为页面内容被撑开可以产生滚动，webview 本身不能滚动。</li>
+<li>触发输入框以外的区域时，输入框失去焦点，软键盘收起。但是，触发键盘上的收起按钮键盘时，输入框并不会失去焦点，同样软键盘收起。</li>
+</ul>
+</li>
+</ul>
+<h4 id="2、IOS-和-Android-监听软键盘弹起和收起"><a href="#2、IOS-和-Android-监听软键盘弹起和收起" class="headerlink" title="2、IOS 和 Android 监听软键盘弹起和收起"></a>2、IOS 和 Android 监听软键盘弹起和收起</h4><ul>
+<li>在 IOS 上，监听输入框的 focus 事件来获知软键盘弹起，监听输入框的 blur 事件获知软键盘收起。</li>
+<li>在 Android 上，监听 webview 高度会变化，高度变小获知软键盘弹起，否则软键盘收起。</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;filed-wrapper&quot;&gt;</span><br><span class="line">    &lt;van-field</span><br><span class="line">      :readonly=&quot;readonly&quot;</span><br><span class="line">      @focus=&quot;focusChangeHandle&quot;</span><br><span class="line">      @blur=&quot;blurChangeHandle&quot;</span><br><span class="line">    /&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot;&gt;</span><br><span class="line">import Vue from &quot;vue&quot;;</span><br><span class="line">import &#123; getDeviceType &#125; from &quot;@/utils/helpers/function&quot;;</span><br><span class="line">const deviceTypeObj: any = getDeviceType();</span><br><span class="line"></span><br><span class="line">export default Vue.extend(&#123;</span><br><span class="line">  mounted(): void &#123;</span><br><span class="line">    if (deviceTypeObj.isAndroid) &#123;</span><br><span class="line">      // 监听android软键盘弹起 和 收起</span><br><span class="line">      let originHeight =</span><br><span class="line">        document.documentElement.clientHeight || document.body.clientHeight;</span><br><span class="line">      window.addEventListener(</span><br><span class="line">        &quot;resize&quot;,</span><br><span class="line">        function () &#123;</span><br><span class="line">          const resizeHeight =</span><br><span class="line">            document.documentElement.clientHeight || document.body.clientHeight;</span><br><span class="line">          if (originHeight &lt; resizeHeight) &#123;</span><br><span class="line">            console.log(&quot;Android 键盘收起啦！&quot;);</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">            console.log(&quot;Android 键盘弹起啦！&quot;);</span><br><span class="line">          &#125;</span><br><span class="line">          originHeight = resizeHeight;</span><br><span class="line">        &#125;,</span><br><span class="line">        false</span><br><span class="line">      );</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    focusChangeHandle(e: any): void &#123;</span><br><span class="line">      if (deviceTypeObj.isIOS) &#123;</span><br><span class="line">        // 监听ios软键盘弹起</span><br><span class="line">        console.log(&quot;IOS 键盘弹起啦！&quot;);</span><br><span class="line">        e.target.scrollIntoView(); // Android 键盘弹起后将焦点元素滚动（scrollIntoView()）到可视区</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    blurChangeHandle(e: any): void &#123;</span><br><span class="line">      if (deviceTypeObj.isIOS) &#123;</span><br><span class="line">        // 监听ios软键盘收起</span><br><span class="line">        console.log(&quot;IOS 键盘收起啦！&quot;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="3、总结"><a href="#3、总结" class="headerlink" title="3、总结"></a>3、总结</h4><p>综上，可知：</p>
+<ul>
+<li>在 IOS 上，会将 webview 整体往上滚一段距离，使得该获取焦点的输入框自动处于可视区，所以不用作处理</li>
+<li>在 Android 则不会这样，它只会改变页面高度，而不会去滚动到当前焦点元素到可视区。所以，只需监听在 Android 键盘弹起后，将焦点元素通过（scrollIntoView()）方法滚动到可视区即可。</li>
+</ul>
+<h2 id="三、iphoneX-以上机型，头部刘海可能会遮挡页面头部的一些元素"><a href="#三、iphoneX-以上机型，头部刘海可能会遮挡页面头部的一些元素" class="headerlink" title="三、iphoneX 以上机型，头部刘海可能会遮挡页面头部的一些元素"></a>三、iphoneX 以上机型，头部刘海可能会遮挡页面头部的一些元素</h2><p>在 IOS 上，iphoneX 以上机型有头部刘海，这可能会对页面上部的部分可视区造成一些遮挡，导致体验不好。</p>
+<p>解决思路是，先获取到设备的机型和头部 bar 高度，如果机型是 iphoneX 以上机型，则对页面根元素加上边距<code>padding-top</code>,值为头部状态 bar 的高度。因本项目是 vue 项目，样式基于 less，所以代码如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div class=&quot;page-wrapper&quot; :class=&quot;isIphoneX ? &#x27;isIphoneX&#x27; : &#x27;&#x27;&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script lang=&quot;ts&quot;&gt;</span><br><span class="line">import Vue from &quot;vue&quot;;</span><br><span class="line"></span><br><span class="line">export default Vue.extend(&#123;</span><br><span class="line">  computed: &#123;</span><br><span class="line">    // 状态栏的高度</span><br><span class="line">    statusBarHeight() &#123;</span><br><span class="line">      const statusBarHeight = window.localStorage.getItem(StatusBarHeight);</span><br><span class="line">      return statusBarHeight ? `$&#123;statusBarHeight&#125;px` : &quot;&quot;;</span><br><span class="line">    &#125;,</span><br><span class="line">    // 是否iphoneX以上机型</span><br><span class="line">    isIphoneX() &#123;</span><br><span class="line">      return window.localStorage.getItem(IsIPhoneX) === &quot;1&quot;;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">  mounted(): void &#123;</span><br><span class="line">    if (this.statusBarHeight)</span><br><span class="line">      document.body.style.setProperty(</span><br><span class="line">        &quot;--statusBarHeight&quot;,</span><br><span class="line">        this.statusBarHeight</span><br><span class="line">      );</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style lang=&quot;less&quot; scoped&gt;</span><br><span class="line">.page-wrapper &#123;</span><br><span class="line">  &amp;.isIphoneX &#123;</span><br><span class="line">    padding-top: var(--statusBarHeight);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>本项目是嵌入 app 中的 h5 页面，通过集成的 tower 插件进行通信，从而获取到的状态栏高度<code>statusBarHeight</code>和机型<code>isIphoneX</code>，查阅了资料，如自己写 js 也可以获取到对应值，如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获得状态栏高度</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getStatusBarHeight</span>(<span class="params"></span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> immersed = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">var</span> ms = <span class="regexp">/Html5Plus\/.+\s\(.*(Immersed\/(\d+\.?\d*).*)\)/gi</span>.<span class="title function_">exec</span>(</span><br><span class="line">    navigator.<span class="property">userAgent</span></span><br><span class="line">  );</span><br><span class="line">  <span class="keyword">if</span> (ms &amp;&amp; ms.<span class="property">length</span> &gt;= <span class="number">3</span>) &#123;</span><br><span class="line">    <span class="comment">// 当前环境为沉浸式状态栏模式</span></span><br><span class="line">    immersed = <span class="built_in">parseFloat</span>(ms[<span class="number">2</span>]); <span class="comment">// 获取状态栏的高度</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> immersed;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 机型iphoneX以上</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">isIphonex</span> = (<span class="params"></span>) =&gt; &#123;</span><br><span class="line">  <span class="comment">// X XS, XS Max, XR</span></span><br><span class="line">  <span class="keyword">const</span> xSeriesConfig = [</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">devicePixelRatio</span>: <span class="number">3</span>,</span><br><span class="line">      <span class="attr">width</span>: <span class="number">375</span>,</span><br><span class="line">      <span class="attr">height</span>: <span class="number">812</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">devicePixelRatio</span>: <span class="number">3</span>,</span><br><span class="line">      <span class="attr">width</span>: <span class="number">414</span>,</span><br><span class="line">      <span class="attr">height</span>: <span class="number">896</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      <span class="attr">devicePixelRatio</span>: <span class="number">2</span>,</span><br><span class="line">      <span class="attr">width</span>: <span class="number">414</span>,</span><br><span class="line">      <span class="attr">height</span>: <span class="number">896</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">  ]; <span class="comment">// h5</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="variable language_">window</span> !== <span class="string">&quot;undefined&quot;</span> &amp;&amp; <span class="variable language_">window</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> isIOS = <span class="regexp">/iphone/gi</span>.<span class="title function_">test</span>(<span class="variable language_">window</span>.<span class="property">navigator</span>.<span class="property">userAgent</span>);</span><br><span class="line">    <span class="keyword">if</span> (!isIOS) <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">const</span> &#123; devicePixelRatio, screen &#125; = <span class="variable language_">window</span>;</span><br><span class="line">    <span class="keyword">const</span> &#123; width, height &#125; = screen;</span><br><span class="line">    <span class="keyword">return</span> xSeriesConfig.<span class="title function_">some</span>(</span><br><span class="line">      <span class="function">(<span class="params">item</span>) =&gt;</span></span><br><span class="line">        item.<span class="property">devicePixelRatio</span> === devicePixelRatio &amp;&amp;</span><br><span class="line">        item.<span class="property">width</span> === width &amp;&amp;</span><br><span class="line">        item.<span class="property">height</span> === height</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>当然，也可以通过插件<code>mobile-detect</code>去获取，可参考文档： <a target="_blank" rel="noopener" href="https://github.com/hgoebl/mobile-detect.js/">https://github.com/hgoebl/mobile-detect.js/</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://jasonchan27.github.io/2022/04/12/h5%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%E5%92%8C%E9%80%82%E9%85%8D%E6%80%BB%E7%BB%93/" data-id="clggg6vl2000solzk1q2yac9s" data-title="h5 兼容问题和适配总结" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%BC%E5%AE%B9/" rel="tag">移动端兼容</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%80%82%E9%85%8D/" rel="tag">适配</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" rel="tag">项目中遇到的问题</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2022/05/05/Node%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          Node 模块机制
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/09/05/React%20State%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">React State更新原理</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hybrid/" rel="tag">Hybrid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVVM/" rel="tag">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6/" rel="tag">React合成事件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React%E5%9F%BA%E7%A1%80/" rel="tag">React基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/State%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86/" rel="tag">State更新原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/style-component/" rel="tag">style-component</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vdom/" rel="tag">vdom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/" rel="tag">前端实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B/" rel="tag">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/" rel="tag">模块机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%BC%E5%AE%B9/" rel="tag">移动端兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/" rel="tag">组件化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag">继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%82%E9%85%8D/" rel="tag">适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" rel="tag">项目中遇到的问题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Hybrid/" style="font-size: 10px;">Hybrid</a> <a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6/" style="font-size: 10px;">React合成事件</a> <a href="/tags/React%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">React基础</a> <a href="/tags/State%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86/" style="font-size: 10px;">State更新原理</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/style-component/" style="font-size: 10px;">style-component</a> <a href="/tags/vdom/" style="font-size: 10px;">vdom</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/" style="font-size: 13.33px;">前端实践</a> <a href="/tags/%E5%8E%9F%E5%9E%8B/" style="font-size: 10px;">原型</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/" style="font-size: 10px;">模块机制</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%BC%E5%AE%B9/" style="font-size: 13.33px;">移动端兼容</a> <a href="/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/" style="font-size: 10px;">组件化</a> <a href="/tags/%E7%BB%A7%E6%89%BF/" style="font-size: 10px;">继承</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E9%80%82%E9%85%8D/" style="font-size: 13.33px;">适配</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 13.33px;">项目</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" style="font-size: 16.67px;">项目中遇到的问题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2023/04/14/webpack%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/">webpack 实践总结</a>
+          </li>
+        
+          <li>
+            <a href="/2022/10/31/PC%E7%AB%AF%E5%92%8C%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%B1%E7%94%A8%E4%B8%80%E5%A5%97%E4%BB%A3%E7%A0%81%E7%9A%84%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90/">PC 端和移动端共用一套代码的可行性分析</a>
+          </li>
+        
+          <li>
+            <a href="/2022/05/05/Node%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/">Node 模块机制</a>
+          </li>
+        
+          <li>
+            <a href="/2022/04/12/h5%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%E5%92%8C%E9%80%82%E9%85%8D%E6%80%BB%E7%BB%93/">h5 兼容问题和适配总结</a>
+          </li>
+        
+          <li>
+            <a href="/2021/09/05/React%20State%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86/">React State更新原理</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2023 Jason Chan<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
