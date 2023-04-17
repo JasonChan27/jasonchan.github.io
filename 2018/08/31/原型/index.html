@@ -1,117 +1,314 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.JPG">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Jason Chan">
+  <meta name="keywords" content="笔记,博客">
   
-  <title>jQuery对原型的使用 | JSON的笔记</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="一、jquery和zepto对原型的使用1234567var $p &#x3D; $(&amp;#x27;p&amp;#x27;)        $p.css(&amp;#x27;font-size&amp;#x27;, &amp;#x27;40px&amp;#x27;)  &#x2F;&#x2F; css是原型方法        alert($p.html())  &#x2F;&#x2F; html是原型方法        var $div1 &#x3D; $(&amp;#x27;#div1&amp;#x27;)">
+    <meta name="description" content="一、jquery和zepto对原型的使用1234567var $p &#x3D; $(&amp;#x27;p&amp;#x27;)        $p.css(&amp;#x27;font-size&amp;#x27;, &amp;#x27;40px&amp;#x27;)  &#x2F;&#x2F; css是原型方法        alert($p.html())  &#x2F;&#x2F; html是原型方法        var $div1 &#x3D; $(&amp;#x27;#div1&amp;#x27;)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery对原型的使用">
 <meta property="og:url" content="https://jasonchan27.github.io/2018/08/31/%E5%8E%9F%E5%9E%8B/index.html">
-<meta property="og:site_name" content="JSON的笔记">
+<meta property="og:site_name" content="Jason的笔记">
 <meta property="og:description" content="一、jquery和zepto对原型的使用1234567var $p &#x3D; $(&amp;#x27;p&amp;#x27;)        $p.css(&amp;#x27;font-size&amp;#x27;, &amp;#x27;40px&amp;#x27;)  &#x2F;&#x2F; css是原型方法        alert($p.html())  &#x2F;&#x2F; html是原型方法        var $div1 &#x3D; $(&amp;#x27;#div1&amp;#x27;)">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-08-31T02:02:00.000Z">
-<meta property="article:modified_time" content="2022-10-31T02:08:15.146Z">
+<meta property="article:modified_time" content="2023-04-17T02:23:44.597Z">
 <meta property="article:author" content="Jason Chan">
 <meta property="article:tag" content="原型">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="JSON的笔记" type="application/atom+xml">
+<meta name="twitter:card" content="summary_large_image">
   
   
-    <link rel="shortcut icon" href="/favicon.png">
+    <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  <title>jQuery对原型的使用 - Jason的笔记</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"jasonchan27.github.io","root":"/","version":"1.9.4","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"UsaXddA42sfhvk7QGhCaqFp4-gzGzoHsz","app_key":"6VmPvhwsZaqK74sTVXv7PP8K","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
 
   
+
   
-<link rel="stylesheet" href="/css/style.css">
+
+  
+
+  
+
+  
+
+  
 
   
     
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+  
+
+
 
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">JSON的笔记</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">记录想分享的瞬间、前端技术</a>
-        </h2>
-      
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Jason&#39;s blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="jQuery对原型的使用"></span>
+          
+        </div>
+
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2018-08-31 10:02" pubdate>
+          2018年8月31日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          2.1k 字
         
-      </nav>
-      <nav id="sub-nav">
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://jasonchan27.github.io"></form>
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
       </div>
+
+      
     </div>
   </div>
-</header>
+</div>
 
-      <div class="outer">
-        <section id="main"><article id="post-原型" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2018/08/31/%E5%8E%9F%E5%9E%8B/" class="article-date">
-  <time class="dt-published" datetime="2018-08-31T02:02:00.000Z" itemprop="datePublished">2018-08-31</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a>
-  </div>
+</div>
 
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      jQuery对原型的使用
-    </h1>
-  
+  </header>
 
-      </header>
+  <main>
     
-    <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="一、jquery和zepto对原型的使用"><a href="#一、jquery和zepto对原型的使用" class="headerlink" title="一、jquery和zepto对原型的使用"></a>一、jquery和zepto对原型的使用</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> $p = $(<span class="string">&#x27;p&#x27;</span>)</span><br><span class="line">        $p.<span class="title function_">css</span>(<span class="string">&#x27;font-size&#x27;</span>, <span class="string">&#x27;40px&#x27;</span>)  <span class="comment">// css是原型方法</span></span><br><span class="line">        <span class="title function_">alert</span>($p.<span class="title function_">html</span>())  <span class="comment">// html是原型方法</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> $div1 = $(<span class="string">&#x27;#div1&#x27;</span>)</span><br><span class="line">        $div1.<span class="title function_">css</span>(<span class="string">&#x27;color&#x27;</span>, <span class="string">&#x27;blue&#x27;</span>)  <span class="comment">// css是原型方法</span></span><br><span class="line">        <span class="title function_">alert</span>($div1.<span class="title function_">html</span>())  <span class="comment">// html是原型方法</span></span><br></pre></td></tr></table></figure>
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">jQuery对原型的使用</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="一、jquery和zepto对原型的使用"><a href="#一、jquery和zepto对原型的使用" class="headerlink" title="一、jquery和zepto对原型的使用"></a>一、jquery和zepto对原型的使用</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-keyword">var</span> $p = $(<span class="hljs-string">&#x27;p&#x27;</span>)<br>        $p.<span class="hljs-title function_">css</span>(<span class="hljs-string">&#x27;font-size&#x27;</span>, <span class="hljs-string">&#x27;40px&#x27;</span>)  <span class="hljs-comment">// css是原型方法</span><br>        <span class="hljs-title function_">alert</span>($p.<span class="hljs-title function_">html</span>())  <span class="hljs-comment">// html是原型方法</span><br><br>        <span class="hljs-keyword">var</span> $div1 = $(<span class="hljs-string">&#x27;#div1&#x27;</span>)<br>        $div1.<span class="hljs-title function_">css</span>(<span class="hljs-string">&#x27;color&#x27;</span>, <span class="hljs-string">&#x27;blue&#x27;</span>)  <span class="hljs-comment">// css是原型方法</span><br>        <span class="hljs-title function_">alert</span>($div1.<span class="hljs-title function_">html</span>())  <span class="hljs-comment">// html是原型方法</span><br></code></pre></td></tr></table></figure>
 
 <span id="more"></span>
 
-<h2 id="二、zepto-如何使用原型"><a href="#二、zepto-如何使用原型" class="headerlink" title="二、zepto 如何使用原型"></a>二、zepto 如何使用原型</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 弱化了源码，只是用来理解zepto是如何使用原型的</span></span><br><span class="line">(<span class="keyword">function</span> (<span class="params"><span class="variable language_">window</span></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> zepto = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//构造函数</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">Z</span>(<span class="params">dom,selector</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> i, len = dom ? dom.<span class="property">length</span> : <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>;i &lt; len; i++) &#123;</span><br><span class="line">            <span class="variable language_">this</span>[i] = dom [i]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">length</span> = len</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">selector</span> = selector || <span class="string">&#x27;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    zepto.<span class="property">Z</span> = <span class="keyword">function</span>(<span class="params">dom, selector</span>) &#123;</span><br><span class="line">        <span class="comment">//Z new了一个实例，必然有它的构造函数</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title function_">Z</span>(dom, selector)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    zepto.<span class="property">init</span> = <span class="keyword">function</span> (<span class="params">selector</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> slice = <span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span></span><br><span class="line">        <span class="keyword">var</span> dom = slice.<span class="title function_">call</span>(<span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(selector))</span><br><span class="line">        <span class="keyword">return</span> zepto.<span class="title function_">Z</span>(dom,selector)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 即使用 zepto 时候的$</span></span><br><span class="line">    <span class="keyword">var</span> $ = <span class="keyword">function</span>(<span class="params">selector</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> zepto.<span class="title function_">init</span>(selector)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">$</span> = $</span><br><span class="line"></span><br><span class="line">    $.fn = &#123;</span><br><span class="line">        <span class="attr">css</span>: <span class="keyword">function</span> (<span class="params">key, value</span>) &#123;</span><br><span class="line">            <span class="title function_">alert</span>(<span class="string">&#x27;css&#x27;</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">html</span>: <span class="keyword">function</span> (<span class="params">value</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;这是一个模拟的html&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    Z.<span class="property"><span class="keyword">prototype</span></span> = $.fn</span><br><span class="line">&#125;)(<span class="variable language_">window</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="二、zepto-如何使用原型"><a href="#二、zepto-如何使用原型" class="headerlink" title="二、zepto 如何使用原型"></a>二、zepto 如何使用原型</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 弱化了源码，只是用来理解zepto是如何使用原型的</span><br>(<span class="hljs-keyword">function</span> (<span class="hljs-params"><span class="hljs-variable language_">window</span></span>) &#123;<br>    <span class="hljs-keyword">var</span> zepto = &#123;&#125;<br><br>    <span class="hljs-comment">//构造函数</span><br>    <span class="hljs-keyword">function</span> <span class="hljs-title function_">Z</span>(<span class="hljs-params">dom,selector</span>) &#123;<br>        <span class="hljs-keyword">var</span> i, len = dom ? dom.<span class="hljs-property">length</span> : <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>;i &lt; len; i++) &#123;<br>            <span class="hljs-variable language_">this</span>[i] = dom [i]<br>        &#125;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">length</span> = len<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">selector</span> = selector || <span class="hljs-string">&#x27;&#x27;</span><br>    &#125;<br><br>    zepto.<span class="hljs-property">Z</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">dom, selector</span>) &#123;<br>        <span class="hljs-comment">//Z new了一个实例，必然有它的构造函数</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title function_">Z</span>(dom, selector)<br>    &#125;<br><br>    zepto.<span class="hljs-property">init</span> = <span class="hljs-keyword">function</span> (<span class="hljs-params">selector</span>) &#123;<br>        <span class="hljs-keyword">var</span> slice = <span class="hljs-title class_">Array</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">slice</span><br>        <span class="hljs-keyword">var</span> dom = slice.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(selector))<br>        <span class="hljs-keyword">return</span> zepto.<span class="hljs-title function_">Z</span>(dom,selector)<br>    &#125;<br><br>    <span class="hljs-comment">// 即使用 zepto 时候的$</span><br>    <span class="hljs-keyword">var</span> $ = <span class="hljs-keyword">function</span>(<span class="hljs-params">selector</span>) &#123;<br>        <span class="hljs-keyword">return</span> zepto.<span class="hljs-title function_">init</span>(selector)<br>    &#125;<br><br>    <span class="hljs-variable language_">window</span>.<span class="hljs-property">$</span> = $<br><br>    $.fn = &#123;<br>        <span class="hljs-attr">css</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">key, value</span>) &#123;<br>            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;css&#x27;</span>)<br>        &#125;,<br>        <span class="hljs-attr">html</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;这是一个模拟的html&#x27;</span><br>        &#125;<br>    &#125;<br>    Z.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = $.fn<br>&#125;)(<span class="hljs-variable language_">window</span>)<br></code></pre></td></tr></table></figure>
 
 <p>注：如$(‘p’)，则先会返回一个zepto.init函数，zepto.init方法会返回一个zepto.Z函数，zepto.Z函数new了一个Z的实例，而Z函数就是构造函数，然后把$.fn挂在Z函数的原型上，$.fn是zepto的api。</p>
-<h2 id="三、jquery-如何使用原型"><a href="#三、jquery-如何使用原型" class="headerlink" title="三、jquery 如何使用原型"></a>三、jquery 如何使用原型</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 弱化了源码，只是用来理解jquery是如何使用原型的</span></span><br><span class="line">(<span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> jQuery = <span class="keyword">function</span> (<span class="params">selector</span>) &#123;</span><br><span class="line">        <span class="comment">//出现了new关键字，所以去找它的构造函数</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> jQuery.<span class="property">fn</span>.<span class="title function_">init</span>(selector)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//初始化jquery.fn</span></span><br><span class="line">    jQuery.<span class="property">fn</span> = &#123;</span><br><span class="line">        <span class="attr">css</span>: <span class="keyword">function</span> (<span class="params">key, value</span>) &#123;</span><br><span class="line">            <span class="title function_">alert</span>(<span class="string">&#x27;css&#x27;</span>)</span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="attr">html</span>: <span class="keyword">function</span> (<span class="params">value</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">&#x27;html&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 定义了构造函数</span></span><br><span class="line">    <span class="keyword">var</span> init = jQuery.<span class="property">fn</span>.<span class="property">init</span> = <span class="keyword">function</span>(<span class="params">selector</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> slice = <span class="title class_">Array</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">slice</span></span><br><span class="line">        <span class="keyword">var</span> dom = slice.<span class="title function_">call</span>(<span class="variable language_">document</span>.<span class="title function_">querySelectorAll</span>(selector))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">var</span> i, len = dom ? dom.<span class="property">length</span> : <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span>(i = <span class="number">0</span>; i &lt; length; i++)&#123;</span><br><span class="line">            <span class="variable language_">this</span>[i] = dom[i]</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">length</span> = len</span><br><span class="line">        <span class="variable language_">this</span>.<span class="property">selector</span> = selector || <span class="string">&#x27;&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//定义原型</span></span><br><span class="line">    init.<span class="property"><span class="keyword">prototype</span></span> = jQuery.<span class="property">fn</span></span><br><span class="line"></span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">$</span> = jQuery</span><br><span class="line">&#125;)(<span class="variable language_">window</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="三、jquery-如何使用原型"><a href="#三、jquery-如何使用原型" class="headerlink" title="三、jquery 如何使用原型"></a>三、jquery 如何使用原型</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs javascript"><span class="hljs-comment">// 弱化了源码，只是用来理解jquery是如何使用原型的</span><br>(<span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> jQuery = <span class="hljs-keyword">function</span> (<span class="hljs-params">selector</span>) &#123;<br>        <span class="hljs-comment">//出现了new关键字，所以去找它的构造函数</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> jQuery.<span class="hljs-property">fn</span>.<span class="hljs-title function_">init</span>(selector)<br>    &#125;<br><br>    <span class="hljs-comment">//初始化jquery.fn</span><br>    jQuery.<span class="hljs-property">fn</span> = &#123;<br>        <span class="hljs-attr">css</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">key, value</span>) &#123;<br>            <span class="hljs-title function_">alert</span>(<span class="hljs-string">&#x27;css&#x27;</span>)<br>        &#125;,<br>        <span class="hljs-attr">html</span>: <span class="hljs-keyword">function</span> (<span class="hljs-params">value</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-string">&#x27;html&#x27;</span><br>        &#125;<br>    &#125;<br><br>    <span class="hljs-comment">// 定义了构造函数</span><br>    <span class="hljs-keyword">var</span> init = jQuery.<span class="hljs-property">fn</span>.<span class="hljs-property">init</span> = <span class="hljs-keyword">function</span>(<span class="hljs-params">selector</span>) &#123;<br>        <span class="hljs-keyword">var</span> slice = <span class="hljs-title class_">Array</span>.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span>.<span class="hljs-property">slice</span><br>        <span class="hljs-keyword">var</span> dom = slice.<span class="hljs-title function_">call</span>(<span class="hljs-variable language_">document</span>.<span class="hljs-title function_">querySelectorAll</span>(selector))<br><br>        <span class="hljs-keyword">var</span> i, len = dom ? dom.<span class="hljs-property">length</span> : <span class="hljs-number">0</span><br>        <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; length; i++)&#123;<br>            <span class="hljs-variable language_">this</span>[i] = dom[i]<br>        &#125;<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">length</span> = len<br>        <span class="hljs-variable language_">this</span>.<span class="hljs-property">selector</span> = selector || <span class="hljs-string">&#x27;&#x27;</span><br>    &#125;<br><br>    <span class="hljs-comment">//定义原型</span><br>    init.<span class="hljs-property"><span class="hljs-keyword">prototype</span></span> = jQuery.<span class="hljs-property">fn</span><br><br>    <span class="hljs-variable language_">window</span>.<span class="hljs-property">$</span> = jQuery<br>&#125;)(<span class="hljs-variable language_">window</span>)<br></code></pre></td></tr></table></figure>
 
 <p>注：如$(‘p’)，会先new一个jQuery.fn.init的实例，而jQuery.fn.init就是构造函数，最后初始化jQuery.fn并挂在了jQuery.fn.init的原型上。$.fn就是jquery的api或自定义扩展的api。</p>
 <p>注：为何要把原型方法放在 $.fn ？</p>
@@ -120,157 +317,415 @@
 <li>将插件扩展统一到 $.fn.xxx 这一个接口，方便使用</li>
 </ul>
 
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
       
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://jasonchan27.github.io/2018/08/31/%E5%8E%9F%E5%9E%8B/" data-id="clggg6vlb0012olzk8926fbt1" data-title="jQuery对原型的使用" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B/" rel="tag">原型</a></li></ul>
 
-    </footer>
-  </div>
+<span class="category-chains">
+  
   
     
-<nav id="article-nav">
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF/" class="category-chain-item">技术</a>
   
-    <a href="/2018/08/31/%E5%BC%82%E6%AD%A5/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">前一篇</strong>
-      <div class="article-nav-title">
-        
-          异步
-        
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8E%9F%E5%9E%8B/">#原型</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>jQuery对原型的使用</div>
+      <div>https://jasonchan27.github.io/2018/08/31/原型/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Jason Chan</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2018年8月31日</div>
+        </div>
+      
+      
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2018/08/31/%E5%BC%82%E6%AD%A5/" title="异步">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">异步</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2018/08/30/H5%E3%80%81CSS3%E6%80%BB%E7%BB%93/" title="H5、CSS3总结">
+                        <span class="hidden-mobile">H5、CSS3总结</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  
+  
+    <article id="comments" lazyload>
+      
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"UsaXddA42sfhvk7QGhCaqFp4-gzGzoHsz","appKey":"6VmPvhwsZaqK74sTVXv7PP8K","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+    </article>
+  
+
+
+          </article>
+        </div>
       </div>
-    </a>
-  
-  
-    <a href="/2018/08/30/H5%E3%80%81CSS3%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">后一篇</strong>
-      <div class="article-nav-title">H5、CSS3总结</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">分类</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></li></ul>
     </div>
-  </div>
 
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS3/" rel="tag">CSS3</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/HTML5/" rel="tag">HTML5</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hybrid/" rel="tag">Hybrid</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVVM/" rel="tag">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6/" rel="tag">React合成事件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React%E5%9F%BA%E7%A1%80/" rel="tag">React基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/State%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86/" rel="tag">State更新原理</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/" rel="tag">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/style-component/" rel="tag">style-component</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vdom/" rel="tag">vdom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/" rel="tag">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/" rel="tag">前端实践</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B/" rel="tag">原型</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" rel="tag">原型链</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/" rel="tag">模块机制</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%BC%E5%AE%B9/" rel="tag">移动端兼容</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/" rel="tag">组件化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%BB%A7%E6%89%BF/" rel="tag">继承</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%82%E9%85%8D/" rel="tag">适配</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE/" rel="tag">项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" rel="tag">项目中遇到的问题</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/CSS3/" style="font-size: 10px;">CSS3</a> <a href="/tags/HTML5/" style="font-size: 10px;">HTML5</a> <a href="/tags/Hybrid/" style="font-size: 10px;">Hybrid</a> <a href="/tags/MVVM/" style="font-size: 10px;">MVVM</a> <a href="/tags/React/" style="font-size: 20px;">React</a> <a href="/tags/React%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6/" style="font-size: 10px;">React合成事件</a> <a href="/tags/React%E5%9F%BA%E7%A1%80/" style="font-size: 10px;">React基础</a> <a href="/tags/State%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86/" style="font-size: 10px;">State更新原理</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/style-component/" style="font-size: 10px;">style-component</a> <a href="/tags/vdom/" style="font-size: 10px;">vdom</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/" style="font-size: 13.33px;">前端实践</a> <a href="/tags/%E5%8E%9F%E5%9E%8B/" style="font-size: 10px;">原型</a> <a href="/tags/%E5%8E%9F%E5%9E%8B%E9%93%BE/" style="font-size: 10px;">原型链</a> <a href="/tags/%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/" style="font-size: 10px;">模块机制</a> <a href="/tags/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%BC%E5%AE%B9/" style="font-size: 13.33px;">移动端兼容</a> <a href="/tags/%E7%BB%84%E4%BB%B6%E5%8C%96/" style="font-size: 10px;">组件化</a> <a href="/tags/%E7%BB%A7%E6%89%BF/" style="font-size: 10px;">继承</a> <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" style="font-size: 10px;">设计模式</a> <a href="/tags/%E9%80%82%E9%85%8D/" style="font-size: 13.33px;">适配</a> <a href="/tags/%E9%A1%B9%E7%9B%AE/" style="font-size: 13.33px;">项目</a> <a href="/tags/%E9%A1%B9%E7%9B%AE%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" style="font-size: 16.67px;">项目中遇到的问题</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/04/">四月 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/10/">十月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">五月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/04/">四月 2022</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">九月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">九月 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2023/04/14/webpack%E5%AE%9E%E8%B7%B5%E6%80%BB%E7%BB%93/">webpack 实践总结</a>
-          </li>
-        
-          <li>
-            <a href="/2022/10/31/PC%E7%AB%AF%E5%92%8C%E7%A7%BB%E5%8A%A8%E7%AB%AF%E5%85%B1%E7%94%A8%E4%B8%80%E5%A5%97%E4%BB%A3%E7%A0%81%E7%9A%84%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90/">PC 端和移动端共用一套代码的可行性分析</a>
-          </li>
-        
-          <li>
-            <a href="/2022/05/05/Node%E6%A8%A1%E5%9D%97%E6%9C%BA%E5%88%B6/">Node 模块机制</a>
-          </li>
-        
-          <li>
-            <a href="/2022/04/12/h5%E5%85%BC%E5%AE%B9%E9%97%AE%E9%A2%98%E5%92%8C%E9%80%82%E9%85%8D%E6%80%BB%E7%BB%93/">h5 兼容问题和适配总结</a>
-          </li>
-        
-          <li>
-            <a href="/2021/09/05/React%20State%E6%9B%B4%E6%96%B0%E5%8E%9F%E7%90%86/">React State更新原理</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
+    <div class="side-col d-none d-lg-block col-lg-2">
       
-      &copy; 2023 Jason Chan<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
 
     </div>
-    <nav id="mobile-nav">
+  </div>
+</div>
+
+
+
+
+
   
-    <a href="/" class="mobile-nav-link">Home</a>
+
+
+
   
-    <a href="/archives" class="mobile-nav-link">Archives</a>
+
+
+
   
-</nav>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
     
 
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a><span>Jason</span></a> <i class="iconfont icon-love"></i> <a><span>Blog</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
+    <script  src="/js/img-lazyload.js" ></script>
+  
 
 
 
 
-<script src="/js/script.js"></script>
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 
-  </div>
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
