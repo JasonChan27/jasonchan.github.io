@@ -37,10 +37,11 @@
 <meta property="og:image" content="https://jasonchan27.github.io/images/http/2-8.jpg">
 <meta property="og:image" content="https://jasonchan27.github.io/images/http/2-9.jpg">
 <meta property="article:published_time" content="2023-04-16T06:29:08.000Z">
-<meta property="article:modified_time" content="2023-04-17T02:26:42.491Z">
+<meta property="article:modified_time" content="2023-04-17T10:35:42.244Z">
 <meta property="article:author" content="Jason Chan">
-<meta property="article:tag" content="前端实践">
 <meta property="article:tag" content="复习总结">
+<meta property="article:tag" content="原理">
+<meta property="article:tag" content="Http协议">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://jasonchan27.github.io/images/http/1-1.png">
   
@@ -316,7 +317,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="一、Http-基础"><a href="#一、Http-基础" class="headerlink" title="一、Http 基础"></a>一、Http 基础</h2><h2 id="1、网络协议分层"><a href="#1、网络协议分层" class="headerlink" title="1、网络协议分层"></a>1、网络协议分层</h2><p><img src="/images/http/1-1.png" srcset="/img/loading.gif" lazyload alt="图一-1"></p>
+                <h1 id="一、Http-基础"><a href="#一、Http-基础" class="headerlink" title="一、Http 基础"></a>一、Http 基础</h1><h2 id="1、网络协议分层"><a href="#1、网络协议分层" class="headerlink" title="1、网络协议分层"></a>1、网络协议分层</h2><p><img src="/images/http/1-1.png" srcset="/img/loading.gif" lazyload alt="图一-1"></p>
 <ul>
 <li>物理层主要作用是定义物理设备如何传输数据</li>
 <li>数据链路层在通信的实体间建立数据链路层（0101 之类的）</li>
@@ -426,7 +427,7 @@
 <li>Connection: 通知浏览器保持当前 HTTP 连接，以便在策略允许范围内进行连接复用</li>
 <li>Keep-Alive: 保持连接的策略</li>
 </ul>
-<h2 id="二、Http-特性"><a href="#二、Http-特性" class="headerlink" title="二、Http 特性"></a>二、Http 特性</h2><h2 id="1、CORS-跨域请求"><a href="#1、CORS-跨域请求" class="headerlink" title="1、CORS 跨域请求"></a>1、CORS 跨域请求</h2><h3 id="i、浏览器同域限制"><a href="#i、浏览器同域限制" class="headerlink" title="i、浏览器同域限制"></a>i、浏览器同域限制</h3><p>如果服务端没有设置头信息 Access-Control-Allow-Origin，在前端跨域请求时，虽然客户端的请求还会被服务端正常接收，但是浏览器会把服务端返回的数据忽略掉，并在 console 中报错，这是浏览器的同源策略。</p>
+<h1 id="二、Http-特性"><a href="#二、Http-特性" class="headerlink" title="二、Http 特性"></a>二、Http 特性</h1><h2 id="1、CORS-跨域请求"><a href="#1、CORS-跨域请求" class="headerlink" title="1、CORS 跨域请求"></a>1、CORS 跨域请求</h2><h3 id="i、浏览器同域限制"><a href="#i、浏览器同域限制" class="headerlink" title="i、浏览器同域限制"></a>i、浏览器同域限制</h3><p>如果服务端没有设置头信息 Access-Control-Allow-Origin，在前端跨域请求时，虽然客户端的请求还会被服务端正常接收，但是浏览器会把服务端返回的数据忽略掉，并在 console 中报错，这是浏览器的同源策略。</p>
 <p>解决方案一是服务端设置<code>Access-Control-Allow-Origin</code>响应头：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs javascript">res.<span class="hljs-title function_">writeHead</span>(<span class="hljs-number">200</span>, &#123;<br>  <span class="hljs-string">&quot;Access-Control-Allow-Origin&quot;</span>: <span class="hljs-string">&quot;http://127.0.0.1:8888&quot;</span>, <span class="hljs-comment">// 设置后，则对‘http://127.0.0.1:8888’来源的请求放开同域限制，从而浏览器可以实现跨于请求</span><br>&#125;);<br></code></pre></td></tr></table></figure>
 
@@ -608,7 +609,7 @@
 <p>服务端通过设置<em>Content-Security-Policy</em>标头为<code>default-src \&#39;self\&#39;</code>，客户端访问<code>http://127.0.0.1:8888/</code>后，当首页请求非本域名的资源时，浏览器将会忽略此请求，并报错，如下图所示：</p>
 <p><img src="/images/http/2-8.jpg" srcset="/img/loading.gif" lazyload alt="图二-8"></p>
 <p><img src="/images/http/2-9.jpg" srcset="/img/loading.gif" lazyload alt="图二-9"></p>
-<h2 id="三、Nginx-代理及-HTTP2"><a href="#三、Nginx-代理及-HTTP2" class="headerlink" title="三、Nginx 代理及 HTTP2"></a>三、Nginx 代理及 HTTP2</h2><h2 id="1、Nginx-的基本配置"><a href="#1、Nginx-的基本配置" class="headerlink" title="1、Nginx 的基本配置"></a>1、Nginx 的基本配置</h2><p>在 nginx 的配置文件中，可以这样配置：</p>
+<h1 id="三、Nginx-代理及-HTTP2"><a href="#三、Nginx-代理及-HTTP2" class="headerlink" title="三、Nginx 代理及 HTTP2"></a>三、Nginx 代理及 HTTP2</h1><h2 id="1、Nginx-的基本配置"><a href="#1、Nginx-的基本配置" class="headerlink" title="1、Nginx 的基本配置"></a>1、Nginx 的基本配置</h2><p>在 nginx 的配置文件中，可以这样配置：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs conf">server &#123;<br>  listen       80;<br>  # listen       [::]:80 default_server;<br>  server_name  test.com; // 浏览器中访问的host name<br><br>  # return 302 https://$server_name$request_uri;<br><br>  location / &#123;<br>    proxy_pass http://127.0.0.1:8888; // 要代理到什么地方<br>    proxy_set_header Host $host; // 访问test.com时的请求头host的值<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>这样，当浏览器访问<code>test.com</code>时，nginx 会代理到<code>http://127.0.0.1:8888</code>。</p>
@@ -673,9 +674,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E5%89%8D%E7%AB%AF%E5%AE%9E%E8%B7%B5/">#前端实践</a>
-      
         <a href="/tags/%E5%A4%8D%E4%B9%A0%E6%80%BB%E7%BB%93/">#复习总结</a>
+      
+        <a href="/tags/%E5%8E%9F%E7%90%86/">#原理</a>
+      
+        <a href="/tags/Http%E5%8D%8F%E8%AE%AE/">#Http协议</a>
       
     </div>
   
@@ -715,6 +718,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/04/17/Redux%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86%E4%B8%8EReact-router/" title="Redux和Vuex状态管理库的实现原理">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Redux和Vuex状态管理库的实现原理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
